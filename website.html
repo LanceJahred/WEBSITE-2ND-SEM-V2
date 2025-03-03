@@ -3,13 +3,445 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Wristworks - Premium Watches</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>
-        <p></p>
-        <h3></h3>
-        <p></p>
-    </h1>
+    
+        <!-- Header Section -->
+        <header class="header">
+            <div class="container">
+                <!-- Logo -->
+                <a href="#" class="logo">Wrist<span>Works</span></a>
+    
+                <!-- Navigation Menu -->
+                <nav class="nav">
+                    <ul class="nav-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#best">Best Sellers</a></li>
+                        <li><a href="#catalog">Catalog</a></li> 
+                        <li><a href="#reviews">Reviews</a></li>                    
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    <a href="#cart" class="btn my-cart"><i class="fas fa-shopping-cart"></i> My Cart</a>
+                </nav>
+    
+                <!-- Mobile Menu Icon -->
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </header>
+    
+        <script>
+            // Toggle Mobile Menu
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navLinks = document.querySelector(".nav-links");
+    
+            menuToggle.addEventListener("click", () => {
+                navLinks.classList.toggle("active");
+            });
+    
+            // Close menu when clicking a link (for better UX)
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                link.addEventListener("click", () => {
+                    navLinks.classList.remove("active");
+                });
+            });
+        </script>
+    
+
+
+
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Timeless Elegance, <span>Unmatched Precision.</span></h1>
+            <p>Discover premium watches crafted for those who value style and sophistication.</p>
+            <div class="cta-buttons">
+                <a href="#catalog" class="btn secondary-btn">Explore Collections</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Us Section -->
+    <section class="about-us" id="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2 class="section-title">About <span>Wristworks</span></h2>
+                <p>Founded in 2010, Wristworks was born out of a passion for precision craftsmanship and timeless elegance. Our mission is to redefine luxury watches with a perfect blend of tradition and innovation. Every piece we create embodies sophistication, durability, and the essence of modern luxury.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://source.unsplash.com/500x400/?luxury,watch" alt="Luxury Watch">
+            </div>
+        </div>
+
+        <!-- Mission & Vision -->
+        <div class="mission-vision">
+            <div class="mission">
+                <h3>Our Mission</h3>
+                <p>To craft exquisite timepieces that reflect elegance, precision, and prestige, offering watch enthusiasts an unparalleled luxury experience.</p>
+            </div>
+            <div class="vision">
+                <h3>Our Vision</h3>
+                <p>To be the world’s most trusted and sought-after luxury watch brand, setting new standards in innovation and craftsmanship.</p>
+            </div>
+        </div>
+    </section>
+
+    
+        <!-- Featured Collections Section -->
+        <section class="collections">
+            <h2 class="section-title">Explore Our <span>Exclusive Collections</span></h2>
+            <div class="collections-grid">
+                <div class="collection-item">
+                    <img src="https://source.unsplash.com/500x500/?luxury,watch" alt="Luxury Collection">
+                    <div class="collection-info">
+                        <h3>Luxury Collection</h3>
+                        <p>Refined elegance and timeless design.</p>
+                        <a href="#" class="btn">Shop Now</a>
+                    </div>
+                </div>
+    
+                <div class="collection-item">
+                    <img src="https://source.unsplash.com/500x500/?sports,watch" alt="Sports Collection">
+                    <div class="collection-info">
+                        <h3>Sports Collection</h3>
+                        <p>Durability meets performance for an active lifestyle.</p>
+                        <a href="#" class="btn">Shop Now</a>
+                    </div>
+                </div>
+    
+                <div class="collection-item">
+                    <img src="https://source.unsplash.com/500x500/?minimalist,watch" alt="Minimalist Collection">
+                    <div class="collection-info">
+                        <h3>Minimalist Collection</h3>
+                        <p>Understated beauty with sleek and modern aesthetics.</p>
+                        <a href="#" class="btn">Shop Now</a>
+                    </div>
+                </div>
+    
+                <div class="collection-item">
+                    <img src="https://source.unsplash.com/500x500/?smartwatch" alt="Smartwatch Collection">
+                    <div class="collection-info">
+                        <h3>Smartwatch Collection</h3>
+                        <p>Innovative technology combined with sophisticated style.</p>
+                        <a href="#" class="btn">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+    
+
+    <!-- Best Sellers Section -->
+    <section class="best-sellers" id="best">
+        <h2 class="section-title">Our <span>Best Sellers</span></h2>
+        <div class="product-slider">
+            <div class="product">
+                <img src="https://source.unsplash.com/400x400/?luxury,watch" alt="Luxury Watch">
+                <div class="product-info">
+                    <h3>Gold Royal Chrono</h3>
+                    <p>$4,999</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="https://source.unsplash.com/400x400/?sports,watch" alt="Sports Watch">
+                <div class="product-info">
+                    <h3>Elite Sports Edition</h3>
+                    <p>$1,299</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="https://source.unsplash.com/400x400/?minimalist,watch" alt="Minimalist Watch">
+                <div class="product-info">
+                    <h3>Minimal Luxe</h3>
+                    <p>$899</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="https://source.unsplash.com/400x400/?smartwatch" alt="Smartwatch">
+                <div class="product-info">
+                    <h3>Next-Gen Smart</h3>
+                    <p>$1,799</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Product Catalog Section -->
+    <section class="product-catalog" id="catalog">
+        <h2>Our Exclusive Collection</h2>
+
+
+<!-- Filter Section -->
+<div class="filter-container">
+    <label for="brand-filter">Filter by Brand:</label>
+    <select id="brand-filter">
+        <option value="all">All</option>
+        <option value="rolex">Rolex</option>
+        <option value="patek">Patek Philippe</option>
+        <option value="seiko">Seiko</option>
+        <option value="michael-kors">Michael Kors</option>
+        <option value="fossil">Fossil</option>
+    </select>
+</div>
+
+
+
+        <div class="catalog-container">
+
+            <!-- Product 1 -->
+            <div class="product-card" data-brand="rolex">
+                <img src="https://via.placeholder.com/300" alt="Luxury Watch">
+                <div class="product-info">
+                    <h3>Gold Chrono Master</h3>
+                    <p class="price">$1,299.99</p>
+                    <div class="buttons">
+                        <button class="btn">View Details</button>
+                        <button class="btn add-to-cart" data-name="Gold Chrono Master" data-price="1299.99">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-brand="patek">
+                <img src="https://via.placeholder.com/300" alt="Luxury Watch">
+                <div class="product-info">
+                    <h3>Silver Prestige</h3>
+                    <p class="price">$1,499.99</p>
+                    <div class="buttons">
+                        <button class="btn">View Details</nutton>
+                        <button class="btn add-to-cart" data-name="Silver Prestige" data-price="1432.65"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-brand="seiko">
+                <img src="https://via.placeholder.com/300" alt="Luxury Watch">
+                <div class="product-info">
+                    <h3>Black Elegance</h3>
+                    <p class="price">$1,199.99</p>
+                    <div class="buttons">
+                        <button class="btn">View Details</button>
+                        <button class="btn add-to-cart" data-name="cute" data-price="999.99"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-brand="michael-kors">
+                <img src="https://via.placeholder.com/300" alt="Luxury Watch">
+                <div class="product-info">
+                    <h3>Platinum Classic</h3>
+                    <p class="price">$1,799.99</p>
+                    <div class="buttons">
+                        <button class="btn" data-name="Silver Elegance Watch" data-price="399.99" 
+                data-description="A sleek and modern silver watch with a sapphire crystal and leather strap.">
+                View Details
+            </button>
+                        <button class="btn add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- Product 5 -->
+            <div class="product-card" data-brand="fossil">
+                <img src="https://via.placeholder.com/300" alt="Luxury Watch">
+                <div class="product-info">
+                    <h3>Platinum Classic</h3>
+                    <p class="price">$1,799.99</p>
+                    <div class="buttons">
+                        <button class="btn" data-name="Silver Elegance Watch" data-price="399.99" 
+                data-description="A sleek and modern silver watch with a sapphire crystal and leather strap.">
+                View Details
+            </button>
+                        <button class="btn add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+    </section>
+
+<!-- Cart Sidebar -->
+<div class="cart-overlay"></div>
+<div class="cart-sidebar">
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button class="close-cart">&times;</button>
+    </div>
+    <div class="cart-items">
+        <p class="empty-cart">Your cart is empty.</p>
+    </div>
+    <div class="cart-footer">
+        <h3>Total: <span class="cart-total">$0.00</span></h3>
+        <button class="btn checkout-btn">Checkout</button>
+    </div>
+</div>
+
+    
+        <!-- Customer Testimonials Section -->
+        <section class="testimonials" id="reviews">
+            <h2 class="section-title">What Our <span>Customers Say</span></h2>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p>"The craftsmanship and elegance of Wristworks watches are unmatched. Absolutely love my Gold Royal Chrono!"</p>
+                    <div class="customer-info">
+                        <img src="https://source.unsplash.com/100x100/?man,portrait" alt="Customer">
+                        <h3>James Carter</h3>
+                        <span>Verified Buyer</span>
+                    </div>
+                </div>
+    
+                <div class="testimonial">
+                    <p>"I bought the Elite Sports Edition, and it's the perfect blend of durability and style. Highly recommend!"</p>
+                    <div class="customer-info">
+                        <img src="https://source.unsplash.com/100x100/?woman,portrait" alt="Customer">
+                        <h3>Sophia Lee</h3>
+                        <span>Luxury Enthusiast</span>
+                    </div>
+                </div>
+    
+                <div class="testimonial">
+                    <p>"Exceptional quality and customer service! Wristworks truly delivers on luxury and class."</p>
+                    <div class="customer-info">
+                        <img src="https://source.unsplash.com/100x100/?businessman" alt="Customer">
+                        <h3>Daniel Roberts</h3>
+                        <span>Entrepreneur</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        
+            <!-- Footer Section -->
+            <footer class="footer">
+                <div class="footer-container">
+        
+                    <!-- Footer Navigation -->
+                    <div class="footer-nav">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#best">Best Sellers</a></li>
+                            <li><a href="#catalog">Catalog</a></li>
+                            <li><a href="#reviews">Reviews</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+        
+                    <!-- Contact Information -->
+                    <div class="footer-contact" id="contact">
+                        <h3>Contact Us</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Luxury Ave, New York, NY</p>
+                        <p><i class="fas fa-envelope"></i> support@wristworks.com</p>
+                        <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+                    </div>
+        
+                    <!-- Trust Signals -->
+                    <div class="footer-trust">
+                        <h3>Secure Payments</h3>
+                        <div class="payment-icons">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/MasterCard_Logo.svg" alt="MasterCard">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/PayPal.svg" alt="PayPal">
+                        </div>
+                        <h3>Follow Us</h3>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+        
+                </div>
+        
+                <!-- Copyright -->
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Wristworks. All Rights Reserved.</p>
+                </div>
+            </footer>
+            
+            
+
+<!-- Checkout Modal -->
+<div id="checkout-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Checkout</h2>
+        <form id="checkout-form">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="contact">Contact Number:</label>
+            <input type="tel" id="contact" required>
+
+            <label for="payment">Payment Method:</label>
+            <select id="payment" required>
+                <option value="cod">Cash on Delivery</option>
+                <option value="gcash">GCash</option>
+            </select>
+
+            <button type="submit">Confirm Order</button>
+        </form>
+
+
+
+         
+
+        <!-- Receipt Section (Hidden by Default) -->
+        <div id="receipt" style="display: none;">
+            <h3>Order Receipt</h3>
+            <p><strong>Name:</strong> <span id="receiptName"></span></p>
+            <p><strong>Email:</strong> <span id="receiptEmail"></span></p>
+            <p><strong>Contact:</strong> <span id="receiptContact"></span></p>
+            <p><strong>Address:</strong> <span id="receiptAddress"></span></p>
+            <p><strong>Payment Method:</strong> <span id="receiptPayment"></span></p>
+            <h4>Ordered Items:</h4>
+            <ul id="receiptItems"></ul>
+            <p><strong>Total:</strong> <span id="receiptTotal"></span></p>
+            <p>Redirecting to homepage...</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="script.js"></script>
+
 </body>
 </html>
