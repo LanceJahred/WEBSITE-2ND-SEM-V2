@@ -248,27 +248,6 @@ body {
     color: white;
 }
 
-/* Best Sellers Section */
-.best-sellers {
-    padding: 50px 0;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Product Slider */
-.product-slider {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    scrollbar-width: none; /* Hide scrollbar for a sleek look */
-}
-
-/* Hide scrollbar for WebKit browsers */
-.product-slider::-webkit-scrollbar {
-    display: none;
-}
-
 /* Product Card */
 .product {
     position: relative;
@@ -341,125 +320,6 @@ body {
     .btn {
         padding: 8px 18px;
     }
-}
-
-
-
-
-/* Section Title */
-.section-title {
-    font-size: 2.5rem;
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #E5C07B; /* Gold Accent */
-    text-transform: uppercase;
-}
-
-.section-title span {
-    color: white;
-}
-
-/* Testimonials Section */
-.testimonials {
-    padding: 50px 0;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-/* Testimonial Slider */
-.testimonial-slider {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scrollbar-width: none; /* Hide scrollbar */
-    padding-bottom: 10px;
-}
-
-/* Hide scrollbar for WebKit browsers */
-.testimonial-slider::-webkit-scrollbar {
-    display: none;
-}
-
-/* Testimonial Card */
-.testimonial {
-    background: #1A1A1A;
-    padding: 20px;
-    border-radius: 15px;
-    min-width: 300px;
-    text-align: center;
-    box-shadow: 0px 4px 10px rgba(255, 215, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-}
-
-.testimonial:hover {
-    transform: translateY(-5px);
-}
-
-/* Testimonial Text */
-.testimonial p {
-    font-size: 1rem;
-    font-style: italic;
-    color: #EAEAEA;
-    margin-bottom: 15px;
-}
-
-/* Customer Info */
-.customer-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.customer-info img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 3px solid #E5C07B;
-    margin-bottom: 10px;
-}
-
-.customer-info h3 {
-    font-size: 1.2rem;
-    color: #E5C07B;
-    margin: 5px 0;
-}
-
-.customer-info span {
-    font-size: 0.9rem;
-    color: #CCC;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .testimonial-slider {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .testimonial {
-        width: 90%;
-    }
-}
-
-
-
-/* Section Title */
-.section-title {
-    font-size: 2.5rem;
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #E5C07B;
-    text-transform: uppercase;
-}
-
-.section-title span {
-    color: white;
 }
 
 /* About Us Section */
@@ -636,9 +496,14 @@ body {
     justify-content: center;
     gap: 15px;
 }
+.social-icons img {
+    width: 50px;  /* Adjust size as needed */
+    height: auto; /* Keep it proportional */
+}
+
 
 .social-icons a {
-    color: white;
+    color: rgb(237, 14, 14);
     font-size: 1.5rem;
     transition: color 0.3s;
 }
@@ -798,10 +663,11 @@ body {
 /* Product Grid */
 .catalog-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
     max-width: 1100px;
     margin: 0 auto;
+    justify-content: center; /* Ensures proper alignment */
 }
 
 /* Product Card */
@@ -811,6 +677,9 @@ body {
     padding: 20px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+    max-width: 330px; /* Adjust width */
+    margin: 0 auto; /* Center it */
 }
 
 .product-card:hover {
@@ -883,43 +752,6 @@ body {
     }
 }
 
-
-/* Modal Styling */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 350px;
-    text-align: center;
-    color: black;
-    position: relative;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
-    color: black;
-}
-
-.close-btn:hover {
-    color: red;
-}
 
 
 
@@ -1087,21 +919,26 @@ body {
     box-shadow: 0 1px 8px #E5C07B;
     width: 60%;
 }
+select {
+    margin-bottom: 40px; /* Adjust spacing */
+}
+
 
 .filter-container h3 {
     margin-bottom: 10px;
     font-size: 20px;
     color: #333;
 }
-
+#search-bar,
 #brand-filter {
     padding: 10px;
+    margin: 5px;
+    border: 2px solid #f5c518;
+    border-radius: 8px;
     font-size: 16px;
-    border: 2px solid #aaa;
-    border-radius: 5px;
-    background: rgb(168, 166, 166);
+    background: #222;
+    color: #fff;
     cursor: pointer;
-    width: 50%;
     transition: 0.3s;
 }
 
@@ -1156,53 +993,389 @@ body {
     background-color: #b6893f;
 }
 
+/* Successful Orders Section */
+.successful-orders {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgb(45, 44, 44);
+}
 
+.successful-orders .section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #E5C07B;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
+/* Orders Gallery */
+.orders-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
+/* Order Cards */
+.order {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transition: 0.3s ease-in-out;
+    width: 240px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
 
-#receipt {
+.order:hover {
+    transform: scale(1.05);
+}
+
+.order img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Order Details */
+.order p {
+    margin-top: 15px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Animated Badge */
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #28a745;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    animation: pulse 1.5s infinite;
+}
+
+/* Pulse Animation for Badge */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/*carousel buttons*/
+.carousel {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img,
+.carousel-images video {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    display: none;
+}
+
+.carousel-images img:first-child,
+.carousel-images video:first-child {
+    display: block;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/*modal checout*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centers the modal properly */
+    transition: opacity 0.3s ease-in-out;
+}
+.modal-content {
+    background: rgba(20, 20, 20, 0.9); /* Dark premium glassmorphism effect */
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px; /* Keeps it responsive */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+}
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+.close:hover {
+    color: #fff;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 15px;
     text-align: left;
-    padding: 15px;
-    border-top: 1px solid #ccc;
-    margin-top: 10px;
+}
+label {
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    color: gold;
 }
 
-#receipt ul {
-    list-style: none;
-    padding: 0;
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: gold;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
 }
 
-#receipt ul li {
-    padding: 5px 0;
+input:focus,
+textarea:focus,
+select:focus {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 🔹 Responsive Design */
+@media (max-width: 480px) {
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .checkout-btn {
+        font-size: 14px;
+    }
+}
+
+/* Style the select dropdown */
+#payment {
+    background: rgba(255, 255, 255, 0.1); /* Light grayish background */
+    color: #fff; /* White text */
+    border: 1px solid #666; /* Slight border to blend with the theme */
+    padding: 10px;
+    width: 100%; /* Full width for better mobile experience */
+    border-radius: 8px;
+    cursor: pointer;
+    /* Custom dropdown arrow */
+    appearance: none; /* Remove default browser styles */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M7 10l5 5 5-5z"/></svg>'); 
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+}
+
+/* Style the dropdown options */
+#payment option {
+    background: #333; /* Dark gray background */
+    color: gold; /* White text */
 }
 
 
+/*view details design pop up */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
-    background: white;
+    background: #111;
     padding: 20px;
-    width: 350px;
-    margin: 10% auto;
     border-radius: 10px;
     text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+/*details mod*/
+/* Overlay to darken background */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Modal container */
+.custom-modal {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
     position: relative;
 }
 
+/* Close button */
 .close-modal {
     position: absolute;
-    right: 15px;
     top: 10px;
-    font-size: 20px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #fff;
     cursor: pointer;
-    color: red;
 }
+
+/* Product Image */
+.modal-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Price */
+.modal-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #f5c518;
+}
+
+/* Details Section */
+.modal-details {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 10px;
+    color: #ddd;
+}
+.receipt {
+    display: none;
+    background: rgb(224, 24, 24);
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
+    /* Toast styling added to cart sccfl */
+    #toast {
+        visibility: hidden; /* Hidden by default */
+        min-width: 250px; /* Set a default minimum width */
+        margin-left: -125px; /* Divide value of min-width by 2 */
+        background-color: #333; /* Dark background color */
+        color: #fff; /* White text color */
+        text-align: center; /* Centered text */
+        border-radius: 5px; /* Rounded corners */
+        padding: 16px; /* Padding */
+        position: fixed; /* Sit on top of the screen */
+        z-index: 1; /* Add a z-index if needed */
+        left: 50%; /* Center the toast */
+        bottom: 30px; /* 30px from the bottom */
+    }
+
+    /* Show the toast when the "show" class is added */
+    #toast.show {
+        visibility: visible; /* Show the toast */
+        animation: fadein 0.5s, fadeout 0.5s 2.5s; /* Add animations */
+    }
+
+    /* Animations for fading in and out */
+    @keyframes fadein {
+        from { bottom: 0; opacity: 0; }
+        to { bottom: 30px; opacity: 1; }
+    }
+
+    @keyframes fadeout {
+        from { bottom: 30px; opacity: 1; }
+        to { bottom: 0; opacity: 0; }
+    }
+
+    

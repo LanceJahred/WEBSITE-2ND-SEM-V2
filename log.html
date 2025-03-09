@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wristworks - Login & Signup</title>
+    <link rel="stylesheet" href="log.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="Wristworks Logo">
+        </div>
+
+        <div class="form-container">
+            <!-- Signup Form -->
+            <div id="signup">
+                <h2>Create an Account</h2>
+                <form id="signup-form" onsubmit="event.preventDefault(); registerUser();">
+                    <input type="text" id="fName" placeholder="First Name" required>
+                    <input type="text" id="lName" placeholder="Last Name" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="password" id="password" placeholder="Password (min. 8 chars)" required>
+                    <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+                    <button type="submit" class="btn">Sign Up</button>
+                </form>
+                <p>Already have an account? <a href="#" id="show-login">Login here</a></p>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login" style="display:none;">
+                <h2>Welcome Back</h2>
+                <form id="signin-form" onsubmit="event.preventDefault(); loginUser();">
+                    <input type="email" id="login-email" placeholder="Email" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+                <p>Don't have an account? <a href="#" id="show-signup">Sign up here</a></p>
+            </div>
+
+            <!-- Social Media Login -->
+            <div class="social-login">
+                <p>Or sign in with</p>
+                <a href="#" id="google-login"><i class="fab fa-google"></i></a>
+                <a href="#" id="facebook-login"><i class="fab fa-facebook"></i></a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

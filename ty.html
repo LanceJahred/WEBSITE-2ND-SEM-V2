@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrist Works</title>
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+   background: linear-gradient( grey, black);
+    color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .title {
+            font-size: 2em;
+            color: orange;
+            margin-bottom: 20px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            border: 5px solid orange;
+            border-radius: 10px;
+            background-color: rgba(#82838D);
+            box-shadow: 0 0 15px orange;
+            width: 80%;
+            max-width: 1200px;
+        }
+        .section {
+            width: 45%;
+        }
+        .contact {
+            display: flex;
+            flex-direction: column;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .contact form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact input, .contact textarea, .contact button {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        .contact input::placeholder, .contact textarea::placeholder {
+            color: #B6B6B6;
+        }
+        .contact button {
+            background-color: #ff9900;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact button:hover {
+            background-color: #e68a00;
+        }
+        h2 {
+            color: orange;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .social-links, .secure-payments {
+            margin-top: 20px;
+        }
+        .social-links {
+            display: flex;
+            gap: 3px;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+        }
+        .social-links img {
+            width: 24px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .payment-logos {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .payment-logos img {
+            width: 50px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">Wrist Works</div>
+    <div class="container">
+        <div class="section">
+            <h2>Address Detail</h2>
+            <p>Home</p>
+            <p>More Details</p>
+            <p>Home Number</p>
+            <p>Email</p>
+            <h2>Socials</h2>
+            <div class="social-links">
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="/2ND SEM/70b93af70f637f2d8a2dec42bfcf23f8.jpg" alt="Facebook">Facebook
+                </a>
+                <a href="https://www.gmail.com" target="_blank">
+                    <img src="/2ND SEM/aa33825d3af7624348971ae155067fd9.jpg" alt="Gmail">Gmail
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="/2ND SEM/d69922ebdd681366eebb8a4c4be6309a.jpg" alt="Instagram">Instagram
+                </a>
+                <a href="tel:+0901">
+                    <img src="/2ND SEM/591baf7d74ed60077b97172d5bfaf64e.jpg" alt="Phone">Phone
+                </a>
+            </div>
+            <div class="secure-payments">
+                <h2>Secure Payments</h2>
+                <div class="payment-logos">
+                    <a href="https://www.visa.com" target="_blank"><img src="/2ND SEM/07734cf160091516ce46a0e71b9f1cab.jpg" alt="Visa"></a>
+                    <a href="https://www.mastercard.com" target="_blank"><img src="/2ND SEM/f3a543188fbdff82357f41d8c5dc4697.jpg" alt="MasterCard"></a>
+                    <a href="https://www.paypal.com" target="_blank"><img src="/2ND SEM/d7f7dd159d3ebf2b28bee864bd37568e.jpg" alt="PayPal"></a>
+                </div>
+            </div>
+        </div>
+        <div class="section contact">
+            <h2>Contact Us!</h2>
+            <p>We can't solve your problem if you don't tell us about it!</p>
+            <form action="#" method="post">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <textarea name="message" placeholder="Message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

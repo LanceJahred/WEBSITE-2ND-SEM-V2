@@ -1,0 +1,145 @@
+/* 🌟 Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #111; /* Dark theme for luxury feel */
+    color: #fff;
+    text-align: center;
+}
+
+/* 🌟 Centered Card Container */
+.container {
+    max-width: 400px;
+    background: #1b1b1b; /* Dark card */
+    padding: 40px;
+    margin: 80px auto;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1.02);
+}
+
+/* 🌟 Headings */
+h2 {
+    color: #f5c518; /* Gold for premium feel */
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+ h3 {
+    color: #333;
+}
+
+
+/* 🌟 Input Fields */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #444;
+    background: #222;
+    color: #e51616;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #f5c518;
+    outline: none;
+}
+
+/* 🌟 Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #f5c518, #d4a517);
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #7a7977, #e8d48d);
+}
+
+/* 🌟 Links */
+p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+p a {
+    text-decoration: none;
+    color: #f5c518;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+p a:hover {
+    color: #d4a517;
+}
+
+/* 🌟 Order History */
+#orderHistory {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+#orderHistory li {
+    background: #222;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 6px;
+    transition: 0.3s;
+    color: #f5c518;
+    font-weight: bold;
+}
+
+#orderHistory li:hover {
+    background: #333;
+}
+
+/* 🌟 Responsive Design */
+@media (max-width: 500px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+/* 🌟 Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f5c518;
+    color: black;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, bottom 0.2s;
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+    bottom: 50px;
+}

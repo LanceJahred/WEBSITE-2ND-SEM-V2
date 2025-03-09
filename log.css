@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #121212; /* Dark background */
+    color: #fff; /* White text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+.logo img {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #f4f4f4;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+}
+
+.btn {
+    background: #ffa500;
+    color: black;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #ff8c00;
+}
+
+.social-login button {
+    display: block;
+    width: 90%;
+    padding: 10px;
+    margin: 10px auto;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.google {
+    background: #db4437;
+    color: white;
+    border: none;
+}
+
+.facebook {
+    background: #3b5998;
+    color: white;
+    border: none;
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+footer a {
+    text-decoration: none;
+    color: #ffa500;
+}
+
+.social-login a {
+    display: inline-block;
+    font-size: 24px;
+    color: white;
+    background: #333;
+    width: 60px;
+    height: 43xpx;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 25%;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.social-login a:hover {
+    background: #ffa500;
+}
+
+.social-login .fa-google {
+    color: #db4437;
+}
+
+.social-login .fa-facebook {
+    color: #3b5998;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Wristworks</title>
+    <link rel="stylesheet" href="dashboard.css"> 
+</head>
+<body onload="loadDashboard()">
+    
+    <!-- Header (Refined, Minimalist Look) -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="website.html" class="logo">Wrist<span>Works</span></a>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="website.html">Home</a></li>
+                    <li><a href="dashboard.html#orders" onclick="showSection('orders'); return false;">Orders</a></li>
+                    <li><a href="dashboard.html#settings" onclick="showSection('settings'); return false;">Settings</a></li>
+                </ul>
+            </nav>            
+        </div>
+    </header>
+
+    <!-- User Info (Always Visible) -->
+<div class="dashboard-info user-box">
+    <h2>Welcome, <span id="dashboardUsername">Loading...</span></h2>
+    <p>Email: <span id="dashboardEmail">Loading...</span></p>
+</div>
+
+
+<!-- Navigation for Sections -->
+<div class="dashboard-tabs">
+    <button class="tab-btn active" data-section="settings" onclick="showSection('settings')">Settings</button>
+    <button class="tab-btn" data-section="orders" onclick="showSection('orders')">Order History</button>
+</div>
+
+        <!-- Account Settings Section (Hidden by Default) -->
+<div id="settings" class="dashboard-box settings-box hidden-section">
+    <h3>Account Settings</h3>
+    <form id="updateForm" class="update-form">
+        <input type="text" id="newUsername" placeholder="New Username">
+        <input type="email" id="newEmail" placeholder="New Email">
+        <input type="password" id="newPassword" placeholder="New Password">
+        <button type="submit" class="btn update-btn">Update</button>
+    </form>
+</div>
+
+<!-- Order History Section (Hidden by Default) -->
+<div id="orders" class="dashboard-box orders-box hidden-section">
+    <h3>Order History</h3>
+    <ul id="orderList" class="order-list"><li>Loading orders...</li></ul>
+</div>
+        <!-- Logout Button (Bottom of Page) -->
+        <button onclick="logoutUser()" class="logout-btn">Logout</button>
+    </div>
+
+    <script src="script.js"></script>
+   <script>
+    function logoutUser() {
+        alert("You have been logged out!");
+        window.location.href = "login.html";
+    }
+   </script>
+</body>
+</html>

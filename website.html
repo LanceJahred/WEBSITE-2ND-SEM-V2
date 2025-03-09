@@ -7,9 +7,27 @@
     <link rel="stylesheet" href="styles.css">
     
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
-<body>
+    <script>
+        // Function to Display Logged-in Username
+        function displayUserName() {
+            let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
     
+            if (loggedInUser) {
+                document.getElementById("usernameDisplay").innerText = loggedInUser.username;
+            } else {
+                document.getElementById("usernameDisplay").innerText = "Guest";
+            }
+        }
+    
+        // Call displayUserName when the page loads
+        displayUserName();
+    </script>
+</head>
+<body onload="displayUserName()"> <!-- Call function on page load -->>
+    <p>Welcome, <span id="usernameDisplay">Guest</span>!</p>
+    
+    
+
         <!-- Header Section -->
         <header class="header">
             <div class="container">
@@ -27,6 +45,9 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                     <a href="#cart" class="btn my-cart"><i class="fas fa-shopping-cart"></i> My Cart</a>
+                    <a id="accountBtn" href="login.html" class="btn my-account">Login</a>
+
+
                 </nav>
     
                 <!-- Mobile Menu Icon -->
@@ -76,10 +97,27 @@
         <div class="about-container">
             <div class="about-text">
                 <h2 class="section-title">About <span>Wristworks</span></h2>
-                <p>Founded in 2010, Wristworks was born out of a passion for precision craftsmanship and timeless elegance. Our mission is to redefine luxury watches with a perfect blend of tradition and innovation. Every piece we create embodies sophistication, durability, and the essence of modern luxury.</p>
+                <p style="text-align: justify;">Wristworks began as a dream in the heart of a young entrepreneur who had a passion for creating beautiful, affordable accessories. 
+                    It all started in 2022, when the founder, inspired by the growing demand for non-tarnish jewelry, decided to turn a simple idea into 
+                    a thriving business. With a small online store and a booth at local markets, the brand quickly gained attention for its high-quality, 
+                    tarnish-resistant jewelry that combined elegance with affordability.
+                    <br><br><br>
+                    As the business grew, so did the founder’s vision. Customers loved the jewelry, but many expressed a desire for matching accessories, 
+                    particularly watches that could complement their style without costing a fortune. This feedback sparked an idea: why not create a line 
+                    of affordable luxury watches that embody the same values of quality, design, and accessibility?
+                    <br><br><br>
+                    In 2023, Wristworks officially launched its first collection of luxury watches. The response was overwhelming. Customers were drawn to 
+                    the brand’s commitment to timeless designs, precision craftsmanship, and affordable pricing. Each watch was carefully crafted to reflect
+                     sophistication and durability, making it a perfect companion for both everyday wear and special occasions.
+                    <br><br><br>
+                    Over the years, Wristworks has grown from a small local business to a recognized name in the affordable luxury market. The brand’s 
+                    success is rooted in its core philosophy: everyone deserves to own a piece of luxury. By combining innovative design with exceptional 
+                    value, Wristworks has redefined what it means to wear a luxury watch.
+                    
+                    Today, Wristworks continues to inspire confidence and individuality through its collections. </p>
             </div>
             <div class="about-image">
-                <img src="https://source.unsplash.com/500x400/?luxury,watch" alt="Luxury Watch">
+                <img src="https://images.pexels.com/photos/380782/pexels-photo-380782.jpeg" alt="Luxury Watch">
             </div>
         </div>
 
@@ -87,101 +125,129 @@
         <div class="mission-vision">
             <div class="mission">
                 <h3>Our Mission</h3>
-                <p>To craft exquisite timepieces that reflect elegance, precision, and prestige, offering watch enthusiasts an unparalleled luxury experience.</p>
+                <p style="text-align: justify;">At Wristworks, we believe that luxury should be within everyone’s reach. Our mission is to empower individuals 
+                    by offering affordable luxury watches that inspire confidence, celebrate individuality, and elevate everyday moments. 
+                    We are dedicated to making timeless elegance accessible to all, ensuring that every customer feels valued and stylish.</p>
             </div>
             <div class="vision">
                 <h3>Our Vision</h3>
-                <p>To be the world’s most trusted and sought-after luxury watch brand, setting new standards in innovation and craftsmanship.</p>
+                <p style="text-align: justify;">to expand globally and introduce new innovations, the brand remains committed to its mission of making luxury 
+                    accessible to all. From its humble beginnings in jewelry to its rise as a trusted watch brand, Wristworks is a 
+                    testament to the power of passion, perseverance, and the belief that true elegance knows no price.</p>
             </div>
         </div>
     </section>
-
     
-        <!-- Featured Collections Section -->
-        <section class="collections">
-            <h2 class="section-title">Explore Our <span>Exclusive Collections</span></h2>
-            <div class="collections-grid">
-                <div class="collection-item">
-                    <img src="https://source.unsplash.com/500x500/?luxury,watch" alt="Luxury Collection">
-                    <div class="collection-info">
-                        <h3>Luxury Collection</h3>
-                        <p>Refined elegance and timeless design.</p>
-                        <a href="#" class="btn">Shop Now</a>
-                    </div>
-                </div>
-    
-                <div class="collection-item">
-                    <img src="https://source.unsplash.com/500x500/?sports,watch" alt="Sports Collection">
-                    <div class="collection-info">
-                        <h3>Sports Collection</h3>
-                        <p>Durability meets performance for an active lifestyle.</p>
-                        <a href="#" class="btn">Shop Now</a>
-                    </div>
-                </div>
-    
-                <div class="collection-item">
-                    <img src="https://source.unsplash.com/500x500/?minimalist,watch" alt="Minimalist Collection">
-                    <div class="collection-info">
-                        <h3>Minimalist Collection</h3>
-                        <p>Understated beauty with sleek and modern aesthetics.</p>
-                        <a href="#" class="btn">Shop Now</a>
-                    </div>
-                </div>
-    
-                <div class="collection-item">
-                    <img src="https://source.unsplash.com/500x500/?smartwatch" alt="Smartwatch Collection">
-                    <div class="collection-info">
-                        <h3>Smartwatch Collection</h3>
-                        <p>Innovative technology combined with sophisticated style.</p>
-                        <a href="#" class="btn">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    
-    
-
     <!-- Best Sellers Section -->
-    <section class="best-sellers" id="best">
+    <section class="product-catalog" id="best">
         <h2 class="section-title">Our <span>Best Sellers</span></h2>
-        <div class="product-slider">
-            <div class="product">
-                <img src="https://source.unsplash.com/400x400/?luxury,watch" alt="Luxury Watch">
-                <div class="product-info">
-                    <h3>Gold Royal Chrono</h3>
-                    <p>$4,999</p>
-                    <a href="#" class="btn">View Details</a>
+        <div class="catalog-container">
+            <!-- Product 1 -->
+        <div class="product-card" data-brand="michael-kors">
+            <div class="carousel">
+                <button class="prev" onclick="prevSlide(this)">❮</button>
+                <div class="carousel-images">
+                    <img src="couple.jpeg" alt="Luxury Watch">
+                    <img src="couple1.jpeg" alt="Luxury Watch">
+                    <img src="couple2.jpeg" alt="">
                 </div>
+                <button class="next" onclick="nextSlide(this)">❯</button>
             </div>
-
-            <div class="product">
-                <img src="https://source.unsplash.com/400x400/?sports,watch" alt="Sports Watch">
-                <div class="product-info">
-                    <h3>Elite Sports Edition</h3>
-                    <p>$1,299</p>
-                    <a href="#" class="btn">View Details</a>
-                </div>
-            </div>
-
-            <div class="product">
-                <img src="https://source.unsplash.com/400x400/?minimalist,watch" alt="Minimalist Watch">
-                <div class="product-info">
-                    <h3>Minimal Luxe</h3>
-                    <p>$899</p>
-                    <a href="#" class="btn">View Details</a>
-                </div>
-            </div>
-
-            <div class="product">
-                <img src="https://source.unsplash.com/400x400/?smartwatch" alt="Smartwatch">
-                <div class="product-info">
-                    <h3>Next-Gen Smart</h3>
-                    <p>$1,799</p>
-                    <a href="#" class="btn">View Details</a>
+            <div class="product-info">
+                <h3>Michael Kors (Couple)</h3>
+                <p class="price">₱1,100</p>
+                <!-- Hidden details for specifications -->
+    <div class="product-details" style="display: none;">
+        <p>Brand: Michael Kors</p>
+        <p>Movement: Automatic</p>
+        <p>Case Material: Stainless Steel</p>
+        <p>Water Resistance: 100m</p>
+    </div>
+                <div class="buttons">
+                    <button class="btn view-details">View Details</button>
+                    <button class="btn add-to-cart" data-name="michael-kors couple" data-price="1100.00" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
                 </div>
             </div>
         </div>
+
+            <!-- Product 2 -->
+        <div class="product-card" data-brand="rolex">
+            <div class="carousel">
+                <button class="prev" onclick="prevSlide(this)">❮</button>
+                <div class="carousel-images">
+                    <img src="gmt.jpg" alt="Luxury Watch">
+                    <img src="gmt1.jpg" alt="Luxury Watch">
+                    <img src="gmt2.jpeg" alt="">
+                    <img src="gmt3.jpg" alt="">
+                    <img src="gmt4.jpeg" alt="">
+                </div>
+                <button class="next" onclick="nextSlide(this)">❯</button>
+            </div>
+            <div class="product-info">
+                <h3>Rolex (GMT - Masters II date)</h3>
+                <p class="price">₱1,200</p>
+                <!-- Hidden details for specifications -->
+    <div class="product-details" style="display: none;">
+        <p>Brand: Rolex</p>
+        <p>Movement: Automatic</p>
+        <p>Unit: GMT - Masters II</p>
+        <p>Case Material: Stainless Steel</p>
+        <p>Water Resistance: 100m</p>
+    </div>
+                <div class="buttons">
+                    <button class="btn view-details">View Details</button>
+                    <button class="btn add-to-cart" data-name="Gmt Masters 2" data-price="1200.00" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+            <!-- Product 3 -->
+        <div class="product-card" data-brand="cartier">
+            <div class="carousel">
+                <button class="prev" onclick="prevSlide(this)">❮</button>
+                <div class="carousel-images">
+                    <img src="cartier.jpeg" alt="Luxury Watch">
+                    <img src="cartier1.webp" alt="Luxury Watch">
+                    <img src="cartier2.webp" alt="">
+                </div>
+                <button class="next" onclick="nextSlide(this)">❯</button>
+            </div>
+            <div class="product-info">
+                <h3>Cartier</h3>
+                <p class="price">₱750.00</p>
+                <!-- Hidden details for specifications -->
+    <div class="product-details" style="display: none;">
+        <p>Brand: Cartier</p>
+        <p>Movement: Automatic</p>
+        <p>Case Material: Stainless Steel</p>
+        <p>Water Resistance: 100m</p>
+    </div>
+                <div class="buttons">
+                    <button class="btn view-details">View Details</button>
+                    <button class="btn add-to-cart" data-name="Cartier" data-price="750" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+        </div>
     </section>
+
+    <!-- Product details modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <img id="modalImage" src="" alt="Product Image">
+            <p id="modalPrice"></p>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+    
 
 
     <!-- Product Catalog Section -->
@@ -191,6 +257,8 @@
 
 <!-- Filter Section -->
 <div class="filter-container">
+    <label for="search-bar">Search Product:</label>
+    <input type="text" id="search-bar" placeholder="Search for a watch..." />
     <label for="brand-filter">Filter by Brand:</label>
     <select id="brand-filter">
         <option value="all">All</option>
@@ -198,94 +266,389 @@
         <option value="patek">Patek Philippe</option>
         <option value="seiko">Seiko</option>
         <option value="michael-kors">Michael Kors</option>
-        <option value="fossil">Fossil</option>
+        <option value="cartier">Cartier</option>
+        <option value="tagheuer">Tagheuer</option>
     </select>
-</div>
+    </div>
+    <p id="noResults" style="display: none; color: white; text-align: center;">No products found</p>
 
 
 
-        <div class="catalog-container">
+    <div class="catalog-container">
 
-            <!-- Product 1 -->
-            <div class="product-card" data-brand="rolex">
-                <img src="https://via.placeholder.com/300" alt="Luxury Watch">
-                <div class="product-info">
-                    <h3>Gold Chrono Master</h3>
-                    <p class="price">$1,299.99</p>
-                    <div class="buttons">
-                        <button class="btn">View Details</button>
-                        <button class="btn add-to-cart" data-name="Gold Chrono Master" data-price="1299.99">
-                            <i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                    </div>
+        <!-- Product 1 -->
+        <div class="product-card" data-brand="seiko">
+            <div class="carousel">
+                <button class="prev" onclick="prevSlide(this)">❮</button>
+                <div class="carousel-images">
+                    <img src="gsb.jpeg" alt="Luxury Watch">
+                    <img src="gsb1.jpeg" alt="Luxury Watch">
+                    <video src="grand seiko black dial.mp4" controls></video>
+                </div>
+                <button class="next" onclick="nextSlide(this)">❯</button>
+            </div>
+            <div class="product-info">
+                <h3>Grand Seiko Black Dial</h3>
+                <p class="price"> ₱800.00</p>
+                <!-- Hidden details for specifications -->
+    <div class="product-details" style="display: none;">
+        <p>Brand: Grand Seiko</p>
+        <p>Movement: Automatic</p>
+        <p>Dial: Black</p>
+        <p>Case Material: Stainless Steel</p>
+        <p>Water Resistance: 100m</p>
+    </div>
+                <div class="buttons">
+                    <button class="btn view-details">View Details</button>
+                    <button class="btn add-to-cart" data-name="Grand Seiko Black Dial" data-price="800.00" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
                 </div>
             </div>
-
-            <!-- Product 2 -->
-            <div class="product-card" data-brand="patek">
-                <img src="https://via.placeholder.com/300" alt="Luxury Watch">
-                <div class="product-info">
-                    <h3>Silver Prestige</h3>
-                    <p class="price">$1,499.99</p>
-                    <div class="buttons">
-                        <button class="btn">View Details</nutton>
-                        <button class="btn add-to-cart" data-name="Silver Prestige" data-price="1432.65"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="product-card" data-brand="seiko">
-                <img src="https://via.placeholder.com/300" alt="Luxury Watch">
-                <div class="product-info">
-                    <h3>Black Elegance</h3>
-                    <p class="price">$1,199.99</p>
-                    <div class="buttons">
-                        <button class="btn">View Details</button>
-                        <button class="btn add-to-cart" data-name="cute" data-price="999.99"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="product-card" data-brand="michael-kors">
-                <img src="https://via.placeholder.com/300" alt="Luxury Watch">
-                <div class="product-info">
-                    <h3>Platinum Classic</h3>
-                    <p class="price">$1,799.99</p>
-                    <div class="buttons">
-                        <button class="btn" data-name="Silver Elegance Watch" data-price="399.99" 
-                data-description="A sleek and modern silver watch with a sapphire crystal and leather strap.">
-                View Details
-            </button>
-                        <button class="btn add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-            
-
-            <!-- Product 5 -->
-            <div class="product-card" data-brand="fossil">
-                <img src="https://via.placeholder.com/300" alt="Luxury Watch">
-                <div class="product-info">
-                    <h3>Platinum Classic</h3>
-                    <p class="price">$1,799.99</p>
-                    <div class="buttons">
-                        <button class="btn" data-name="Silver Elegance Watch" data-price="399.99" 
-                data-description="A sleek and modern silver watch with a sapphire crystal and leather strap.">
-                View Details
-            </button>
-                        <button class="btn add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-
         </div>
+    
+        <!-- Product 2 -->
+        <div class="product-card" data-brand="seiko">
+            <div class="carousel">
+                <button class="prev" onclick="prevSlide(this)">❮</button>
+                <div class="carousel-images">
+                    <img src="sei.png" alt="Luxury Watch">
+                    <img src="sei1.jpeg" alt="Luxury Watch">
+                    <video src="grand seiko white dial.mp4" controls></video>
+                </div>
+                <button class="next" onclick="nextSlide(this)">❯</button>
+            </div>
+            <div class="product-info">
+                <h3>Grand Seiko <br> (White Dial)</h3>
+                <p class="price">₱800.00</p>
+                <!-- Hidden details for specifications -->
+    <div class="product-details" style="display: none;">
+        <p>Brand: Grand Seiko <br> (White Dial)</p>
+        <p>Movement: Automatic</p>
+        <p>Dial: Black</p>
+        <p>Case Material: Stainless Steel</p>
+        <p>Water Resistance: 100m</p>
+    </div>
+                <div class="buttons">
+                    <button class="btn view-details">View Details</button>
+                    <button class="btn add-to-cart" data-name="Grand Seiko White Dial" data-price="800.00" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Product 3 -->
+        <div class="product-card" data-brand="patek">
+            <div class="carousel">
+                <button class="prev" onclick="prevSlide(this)">❮</button>
+                <div class="carousel-images">
+                    <img src="gstone.jpeg" alt="Luxury Watch">
+                    <img src="gstone1.jpeg" alt="Luxury Watch">
+                    <video src="patek philippe geneve gold dial stone.mp4" controls></video>
+                </div>
+                <button class="next" onclick="nextSlide(this)">❯</button>
+            </div>
+            <div class="product-info">
+                <h3>Patek Philippe <br> (Gold Dial - Stone)</h3>
+                <p class="price">₱1,100.00</p>
+                <div class="product-details" style="display: none;">
+                    <p>Brand: Patek Philippe</p>
+                    <p>Movement: Automatic</p>
+                    <p>Dial: Gold - Stone</p>
+                    <p>Case Material: Stainless Steel</p>
+                    <p>Water Resistance: 100m</p>
+                </div>
+                <div class="buttons">
+                    <button class="btn view-details">View Details</button>
+                    <button class="btn add-to-cart" data-name="Patek Philippe Gold Dial" data-price="1100" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card" data-brand="patek">
+            <div class="carousel">
+                <button class="prev" onclick="prevSlide(this)">❮</button>
+                <div class="carousel-images">
+                    <img src="gd.jpeg" alt="Luxury Watch">
+                    <img src="gd1.jpeg" alt="Luxury Watch">
+                    <video src="patek philippe geneve gold dial.mp4" controls></video>
+                </div>
+                <button class="next" onclick="nextSlide(this)">❯</button>
+            </div>
+            <div class="product-info">
+                <h3>Patek Philippe <br> (Gold Dial)</h3>
+                <p class="price">₱850.00</p>
+                <div class="product-details" style="display: none;">
+                    <p>Brand: Patek Philippe</p>
+                    <p>Dial: Gold</p>
+                    <p>Movement: Automatic</p>
+                    <p>Case Material: Stainless Steel</p>
+                    <p>Water Resistance: 100m</p>
+                </div>
+                <div class="buttons">
+                    <button class="btn view-details">View Details</button>
+                    <button class="btn add-to-cart" data-name="cute" data-price="850" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Product 5 -->
+        <div class="product-card" data-brand="patek">
+            <div class="carousel">
+                <button class="prev" onclick="prevSlide(this)">❮</button>
+                <div class="carousel-images">
+                    <img src="st2.jpg" alt="Luxury Watch">
+                    <img src="st1.jpeg" alt="Luxury Watch">
+                    <img src="st.jpeg" alt="s">
+                    <video src="patekphilippegeneve black dial stone.mp4" controls></video>
+                </div>
+                <button class="next" onclick="nextSlide(this)">❯</button>
+            </div>
+            <div class="product-info">
+                <h3>Patek Philippe <br> (Black Dial - Stone)</h3>
+                <p class="price">₱1,100.00</p>
+                <div class="product-details" style="display: none;">
+                    <p>Brand: Patek Philippe</p>
+                    <p>Movement: Automatic</p>
+                    <p>Dial: Black - Stone</p>
+                    <p>Case Material: Stainless Steel</p>
+                    <p>Water Resistance: 100m</p>
+                </div>
+                <div class="buttons">
+                    <button class="btn view-details">View Details</button>
+                    <button class="btn add-to-cart" data-name="cute" data-price="1100.00" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+         <!-- Product 6 -->
+         <div class="product-card" data-brand="tagheuer">
+            <div class="carousel">
+                <button class="prev" onclick="prevSlide(this)">❮</button>
+                <div class="carousel-images">
+                    <img src="tg1.jpeg" alt="Luxury Watch">
+                    <img src="tg.jpeg" alt="Luxury Watch">
+                    <img src="tg2.jpeg" alt="s">
+                    <video src="tagheuer aquaracer.mp4" controls></video>
+                </div>
+                <button class="next" onclick="nextSlide(this)">❯</button>
+            </div>
+            <div class="product-info">
+                <h3>Tagheuer <br>(Aquaracer)</h3>
+                <p class="price">₱950.00</p>
+                <div class="product-details" style="display: none;">
+                    <p>Brand: Tagheuer</p>
+                    <p>Movement: Automatic</p>
+                    <p>Unit: Aquaracer</p>
+                    <p>Case Material: Stainless Steel</p>
+                    <p>Water Resistance: 100m</p>
+                </div>
+                <div class="buttons">
+                    <button class="btn view-details">View Details</button>
+                    <button class="btn add-to-cart" data-name="cute" data-price="950.00" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Product 7 -->
+        <div class="product-card" data-brand="michael-kors">
+            <div class="carousel">
+                <button class="prev" onclick="prevSlide(this)">❮</button>
+                <div class="carousel-images">
+                    <img src="mk2.jpeg" alt="Luxury Watch">
+                    <img src="mk1.jpeg" alt="Luxury Watch">
+                    <img src="mk.jpeg" alt="">
+                    <video src="michael kors bradshow tt womem.mp4" controls></video>
+                </div>
+                <button class="next" onclick="nextSlide(this)">❯</button>
+            </div>
+            <div class="product-info">
+                <h3>Michael Kors <br> (Two Tone - Women)</h3>
+                <p class="price">₱600.00</p>
+                <div class="product-details" style="display: none;">
+                    <p>Brand: Michael Kors</p>
+                    <p>Movement: Automatic</p>
+                    <p>Unit: Two Tone - Women</p>
+                    <p>Case Material: Stainless Steel</p>
+                    <p>Water Resistance: 100m</p>
+                </div>
+                <div class="buttons">
+                    <button class="btn view-details">View Details</button>
+                    <button class="btn add-to-cart" data-name="cute" data-price="600.00" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 8-->
+        <div class="product-card" data-brand="rolex">
+            <div class="carousel">
+                <button class="prev" onclick="prevSlide(this)">❮</button>
+                <div class="carousel-images">
+                    <img src="rol.jpg" alt="Luxury Watch">
+                    <img src="rol1.jpeg" alt="Luxury Watch">
+                    <img src="rol2.jpg" alt="">
+                </div>
+                <button class="next" onclick="nextSlide(this)">❯</button>
+            </div>
+            <div class="product-info">
+                <h3>Rolex Submariner (Black Dial - Two tone)</h3>
+                <p class="price">₱850.00</p>
+                <div class="product-details" style="display: none;">
+                    <p>Brand: Rolex</p>
+                    <p>Movement: Automatic</p>
+                    <p>Unit: Submariner</p>
+                    <p>Dial: Black</p>
+                    <p>Case Material: Stainless Steel</p>
+                    <p>Water Resistance: 100m</p>
+                </div>
+                <div class="buttons">
+                    <button class="btn view-details">View Details</button>
+                    <button class="btn add-to-cart" data-name="cute" data-price="850.00" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product-card" data-brand="cartier">
+            <div class="carousel">
+                <button class="prev" onclick="prevSlide(this)">❮</button>
+                <div class="carousel-images">
+                    <img src="cartier.jpeg" alt="Luxury Watch">
+                    <img src="cartier1.webp" alt="Luxury Watch">
+                    <img src="cartier2.webp" alt="">
+                </div>
+                <button class="next" onclick="nextSlide(this)">❯</button>
+            </div>
+            <div class="product-info">
+                <h3>Cartier</h3>
+                <p class="price">₱750.00</p>
+                <!-- Hidden details for specifications -->
+    <div class="product-details" style="display: none;">
+        <p>Brand: Cartier</p>
+        <p>Movement: Automatic</p>
+        <p>Case Material: Stainless Steel</p>
+        <p>Water Resistance: 100m</p>
+    </div>
+                <div class="buttons">
+                    <button class="btn view-details">View Details</button>
+                    <button class="btn add-to-cart" data-name="Cartier" data-price="750" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product-card" data-brand="rolex">
+            <div class="carousel">
+                <button class="prev" onclick="prevSlide(this)">❮</button>
+                <div class="carousel-images">
+                    <img src="gmt.jpg" alt="">
+                    <img src="gmt1.jpg" alt="">
+                    <img src="gmt2.jpeg" alt="">
+                    <img src="gmt3.jpg" alt="">
+                    <img src="gmt4.jpeg" alt="">
+                </div>
+                <button class="next" onclick="nextSlide(this)">❯</button>
+            </div>
+            <div class="product-info">
+                <h3>Rolex (GMT - Masters II date)</h3>
+                <p class="price">₱1,200.00</p>
+                <!-- Hidden details for specifications -->
+    <div class="product-details" style="display: none;">
+        <p>Brand: Rolex</p>
+        <p>Movement: Automatic</p>
+        <p>Unit: GMT - Masters II</p>
+        <p>Case Material: Stainless Steel</p>
+        <p>Water Resistance: 100m</p>
+    </div>
+                <div class="buttons">
+                    <button class="btn view-details">View Details</button>
+                    <button class="btn add-to-cart" data-name="Gmt Masters 2" data-price="1200.00" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="product-card" data-brand="michael-kors">
+            <div class="carousel">
+                <button class="prev" onclick="prevSlide(this)">❮</button>
+                <div class="carousel-images">
+                    <img src="couple.jpeg" alt="Luxury Watch">
+                    <img src="couple1.jpeg" alt="Luxury Watch">
+                    <img src="couple2.jpeg" alt="">
+                </div>
+                <button class="next" onclick="nextSlide(this)">❯</button>
+            </div>
+            <div class="product-info">
+                <h3>Michael Kors (Couple)</h3>
+                <p class="price">₱1,100.00</p>
+                <!-- Hidden details for specifications -->
+    <div class="product-details" style="display: none;">
+        <p>Brand: Michael Kors</p>
+        <p>Movement: Automatic</p>
+        <p>Case Material: Stainless Steel</p>
+        <p>Water Resistance: 100m</p>
+    </div>
+                <div class="buttons">
+                    <button class="btn view-details">View Details</button>
+                    <button class="btn add-to-cart" data-name="michael-kors couple" data-price="1100.00" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
     </section>
+    
+
+
+<!-- Successful Orders Section -->
+<section class="successful-orders" id="reviews">
+    <h2 class="section-title">Some Successful <span>Orders</span></h2>
+    <div class="orders-gallery">
+        <div class="order">
+            <img src="1741531494777.jpg" alt="Delivered Order">
+            <p>Gold Royal Chrono - Delivered</p>
+        </div>
+        <div class="order">
+            <img src="1741531494784.jpg" alt="Delivered Order">
+            <p>Elite Sports Edition - Delivered</p>
+        </div>
+        <div class="order">
+            <img src="1741531494804.jpg" alt="Delivered Order">
+            <p>Minimal Luxe - Delivered to Daniel Roberts</p>
+        </div>
+        <div class="order">
+            <img src="1741531494824.jpg" alt="Delivered Order">
+            <p>Next-Gen Smart - Delivered to Olivia Martinez</p>
+        </div>
+        <div class="order">
+            <img src="1741531494839.jpg" alt="Delivered Order">
+            <p>Platinum Classic - Delivered to Michael Johnson</p>
+        </div>
+    </div>
+</section>
+
 
 <!-- Cart Sidebar -->
 <div class="cart-overlay"></div>
@@ -299,43 +662,46 @@
     </div>
     <div class="cart-footer">
         <h3>Total: <span class="cart-total">$0.00</span></h3>
-        <button class="btn checkout-btn">Checkout</button>
+        <button class="btn checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
+    </div>
+</div>
+</div>
+
+
+<!-- Checkout Modal -->
+<div id="checkoutModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeCheckout()">&times;</span>
+        <h2>Checkout</h2>
+        <form id="checkoutForm">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" placeholder="Enter your address" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" placeholder="Enter your phone number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="payment">Payment Method:</label>
+                <select id="payment">
+                    <option value="cod">Cash on Delivery (COD)</option>
+                    <option value="gcash">GCash</option>
+                </select>
+            </div>
+
+            <button type="submit" class="checkout-btn">Confirm Order</button>
+        </form>
     </div>
 </div>
 
-    
-        <!-- Customer Testimonials Section -->
-        <section class="testimonials" id="reviews">
-            <h2 class="section-title">What Our <span>Customers Say</span></h2>
-            <div class="testimonial-slider">
-                <div class="testimonial">
-                    <p>"The craftsmanship and elegance of Wristworks watches are unmatched. Absolutely love my Gold Royal Chrono!"</p>
-                    <div class="customer-info">
-                        <img src="https://source.unsplash.com/100x100/?man,portrait" alt="Customer">
-                        <h3>James Carter</h3>
-                        <span>Verified Buyer</span>
-                    </div>
-                </div>
-    
-                <div class="testimonial">
-                    <p>"I bought the Elite Sports Edition, and it's the perfect blend of durability and style. Highly recommend!"</p>
-                    <div class="customer-info">
-                        <img src="https://source.unsplash.com/100x100/?woman,portrait" alt="Customer">
-                        <h3>Sophia Lee</h3>
-                        <span>Luxury Enthusiast</span>
-                    </div>
-                </div>
-    
-                <div class="testimonial">
-                    <p>"Exceptional quality and customer service! Wristworks truly delivers on luxury and class."</p>
-                    <div class="customer-info">
-                        <img src="https://source.unsplash.com/100x100/?businessman" alt="Customer">
-                        <h3>Daniel Roberts</h3>
-                        <span>Entrepreneur</span>
-                    </div>
-                </div>
-            </div>
-        </section>
     
         
             <!-- Footer Section -->
@@ -358,25 +724,23 @@
                     <!-- Contact Information -->
                     <div class="footer-contact" id="contact">
                         <h3>Contact Us</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> 123 Luxury Ave, New York, NY</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Cainta,Rizal Philippines</p>
                         <p><i class="fas fa-envelope"></i> support@wristworks.com</p>
-                        <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+                        <p><i class="fas fa-phone"></i> +63 951 192 2375</p>
                     </div>
         
                     <!-- Trust Signals -->
                     <div class="footer-trust">
                         <h3>Secure Payments</h3>
                         <div class="payment-icons">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/MasterCard_Logo.svg" alt="MasterCard">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/PayPal.svg" alt="PayPal">
+                            <img src="gcash.png" alt="gcash">
+                            <img src="cash-on-delivery.png" alt="cashondeliver">
                         </div>
                         <h3>Follow Us</h3>
                         <div class="social-icons">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=61570852019229" target="_blank"><img src="fbb.png" alt=""></a>
+                            <a href="https://www.tiktok.com/@wristworks1" target="_blank"><img src="tik-tok.png" alt=""></a>
+                            <a href="mailto:lancejahred@gmail.com"><img src="gmail.png" alt="email"></a>
                         </div>
                     </div>
         
@@ -387,61 +751,42 @@
                     <p>&copy; 2025 Wristworks. All Rights Reserved.</p>
                 </div>
             </footer>
-            
-            
 
-<!-- Checkout Modal -->
-<div id="checkout-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2>Checkout</h2>
-        <form id="checkout-form">
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" required>
+<!-- Toast container -->
+<div id="toast">Added to cart successfully!</div>
 
-            <label for="address">Address:</label>
-            <input type="text" id="address" required>
+<script src="script1.js"></script>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" required>
+<script>
+    function updateAccountButton() {
+        let user = JSON.parse(localStorage.getItem("loggedInUser"));
+        let accountBtn = document.getElementById("accountBtn");
+    
+        if (user) {
+            accountBtn.textContent = "My Account";
+            accountBtn.href = "dashboard.html"; // Redirect to dashboard if logged in
+        } else {
+            accountBtn.textContent = "Login";
+            accountBtn.href = "login.html"; // Redirect to login page if not logged in
+        }
+    }
+    
+    // Ensure the function runs when the page loads
+    document.addEventListener("DOMContentLoaded", updateAccountButton);
 
-            <label for="contact">Contact Number:</label>
-            <input type="tel" id="contact" required>
+    function addToCart() {
+            // Perform any add to cart logic here
 
-            <label for="payment">Payment Method:</label>
-            <select id="payment" required>
-                <option value="cod">Cash on Delivery</option>
-                <option value="gcash">GCash</option>
-            </select>
+            // Show the toast
+            const toast = document.getElementById("toast");
+            toast.classList.add("show"); // Add the "show" class
 
-            <button type="submit">Confirm Order</button>
-        </form>
-
-
-
-         
-
-        <!-- Receipt Section (Hidden by Default) -->
-        <div id="receipt" style="display: none;">
-            <h3>Order Receipt</h3>
-            <p><strong>Name:</strong> <span id="receiptName"></span></p>
-            <p><strong>Email:</strong> <span id="receiptEmail"></span></p>
-            <p><strong>Contact:</strong> <span id="receiptContact"></span></p>
-            <p><strong>Address:</strong> <span id="receiptAddress"></span></p>
-            <p><strong>Payment Method:</strong> <span id="receiptPayment"></span></p>
-            <h4>Ordered Items:</h4>
-            <ul id="receiptItems"></ul>
-            <p><strong>Total:</strong> <span id="receiptTotal"></span></p>
-            <p>Redirecting to homepage...</p>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-<script src="script.js"></script>
-
+            // Hide the toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 3000);
+        }
+    </script>
+    
 </body>
 </html>

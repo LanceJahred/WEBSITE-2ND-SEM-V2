@@ -1,282 +1,244 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const cartContainer = document.querySelector(".cart-items");
-    const cartCount = document.querySelector(".cart-count");
-    const cartTotal = document.querySelector(".cart-total");
+    function showToast(message) {
+        let toast = document.createElement("div");
+        toast.classList.add("toast");
+        toast.innerText = message;
+        document.body.appendChild(toast);
 
-    function updateCartUI() {
-        const cartContainer = document.querySelector(".cart-items");
-        const cartTotal = document.querySelector(".cart-total");
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        setTimeout(() => toast.classList.add("show"), 50);
+        setTimeout(() => {
+            toast.classList.remove("show");
+            setTimeout(() => toast.remove(), 200);
+        }, 2000);
+    }
+
+    const signupForm = document.getElementById("signupForm");
+    const loginForm = document.getElementById("loginForm");
+
+    function checkLoginStatus() {
+        let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+        if (loggedInUser) {
+            let usernameDisplay = document.getElementById("usernameDisplay");
+            if (usernameDisplay) usernameDisplay.innerText = loggedInUser.username;
+        }
+    }
+    checkLoginStatus();
+
+    // ✅ SIGNUP FUNCTION
+    if (signupForm) {
+        signupForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let username = document.getElementById("username").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+
+            if (!username || !email || !password) {
+                showToast("⚠️ Please fill in all fields.");
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            if (users.some(user => user.email === email)) {
+                showToast("❌ Email already registered.");
+                return;
+            }
+
+            let newUser = { username, email, password, orders: [] };
+            users.push(newUser);
+            localStorage.setItem("users", JSON.stringify(users));
+
+            showToast("✅ Signup successful! Redirecting...");
+            setTimeout(() => window.location.href = "login.html", 1500);
+        });
+    }
+
+    // ✅ LOGIN FUNCTION
+    if (loginForm) {
+        loginForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let email = document.getElementById("loginEmail").value.trim();
+            let password = document.getElementById("loginPassword").value.trim();
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            let user = users.find(user => user.email === email && user.password === password);
+
+            if (user) {
+                localStorage.setItem("loggedInUser", JSON.stringify(user));
+                showToast("✅ Login successful! Redirecting...");
+                setTimeout(() => window.location.href = "website.html", 1500);
+            } else {
+                showToast("❌ Invalid email or password.");
+            }
+        });
+    }
+
+    // ✅ Load Dashboard Data
+    function loadDashboard() {
+        console.log("✅ loadDashboard() function is running"); // Debugging
     
-        if (!cartContainer || !cartTotal) return;
-    
-        if (cart.length === 0) {
-            cartContainer.innerHTML = "<p class='empty-cart'>Your cart is empty.</p>";
-            cartTotal.innerText = "$0.00";
+        let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+        
+        if (!loggedInUser) {
+            console.log("❌ No logged-in user found. Redirecting to login.");
+            window.location.href = "login.html";
             return;
         }
     
-        let total = 0;
-        cartContainer.innerHTML = ""; // Clear current items
+        // ✅ Check if elements exist before updating them
+        let usernameElement = document.getElementById("dashboardUsername");
+        let emailElement = document.getElementById("dashboardEmail");
     
-        cart.forEach((item, index) => {
-            total += item.price * item.quantity;
-            cartContainer.innerHTML += `
-                <div class="cart-item">
-                    <img src="${item.image}" alt="${item.name}">
-                    <div class="cart-item-details">
-                        <h4>${item.name}</h4>
-                        <p>$${item.price.toFixed(2)} x <span class="item-quantity">${item.quantity}</span></p>
-                        <div class="quantity-controls">
-                            <button class="quantity-btn decrease" data-index="${index}">-</button>
-                            <button class="quantity-btn increase" data-index="${index}">+</button>
-                        </div>
-                        <button class="remove-item" data-index="${index}">Remove</button>
-                    </div>
-                </div>
-            `;
-        });
+        if (usernameElement && emailElement) {
+            usernameElement.innerText = loggedInUser.username || "Unknown";
+            emailElement.innerText = loggedInUser.email || "Unknown";
+            console.log("✅ Username and email updated:", loggedInUser.username, loggedInUser.email);
+        } else {
+            console.error("❌ Dashboard elements not found.");
+        }
     
-        cartTotal.innerText = `$${total.toFixed(2)}`;
-    
-        // **Reattach event listeners**
-        document.querySelectorAll(".increase").forEach(button => {
-            button.addEventListener("click", function () {
-                const index = this.getAttribute("data-index");
-                cart[index].quantity++;
-                localStorage.setItem("cart", JSON.stringify(cart));
-                updateCartUI();
-            });
-        });
-    
-        document.querySelectorAll(".decrease").forEach(button => {
-            button.addEventListener("click", function () {
-                const index = this.getAttribute("data-index");
-                if (cart[index].quantity > 1) {
-                    cart[index].quantity--;
-                } else {
-                    cart.splice(index, 1); // Remove item if quantity reaches 0
-                }
-                localStorage.setItem("cart", JSON.stringify(cart));
-                updateCartUI();
-            });
-        });
-    
-        document.querySelectorAll(".remove-item").forEach(button => {
-            button.addEventListener("click", function () {
-                const index = this.getAttribute("data-index");
-                cart.splice(index, 1);
-                localStorage.setItem("cart", JSON.stringify(cart));
-                updateCartUI();
-            });
-        });
+        // ✅ Load order history
+        let orderList = document.getElementById("orderList");
+        if (orderList) {
+            let orders = loggedInUser.orders || [];
+            orderList.innerHTML = orders.length > 0 
+                ? orders.map(order => `<li>${order}</li>`).join("") 
+                : "<li>No orders yet.</li>";
+        }
     }
     
-    document.querySelectorAll(".add-to-cart").forEach(button => {
-        button.addEventListener("click", function () {
-            const productCard = this.closest(".product-card");
-            const productName = productCard.querySelector("h3").innerText;
-            const productPrice = parseFloat(this.getAttribute("data-price")); // FIX: Ensure price is read from data attribute
-            const productImage = productCard.querySelector("img").src;
 
-            if (isNaN(productPrice)) {
-                console.error(`Invalid price for ${productName}`);
-                return;
-            }
+    // ✅ Update User Info
+    document.getElementById("updateForm")?.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-            const existingItem = cart.find(item => item.name === productName);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ name: productName, price: productPrice, image: productImage, quantity: 1 });
-            }
+        let newUsername = document.getElementById("newUsername").value.trim();
+        let newEmail = document.getElementById("newEmail").value.trim();
+        let newPassword = document.getElementById("newPassword").value.trim();
 
-            localStorage.setItem("cart", JSON.stringify(cart));
-            updateCartUI();
-        });
-    });
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+        let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
-    document.querySelector(".cart-items").addEventListener("click", function (e) {
-        if (e.target.classList.contains("remove-item")) {
-            const index = e.target.getAttribute("data-index");
-            cart.splice(index, 1);
-            localStorage.setItem("cart", JSON.stringify(cart));
-            updateCartUI();
+        let userIndex = users.findIndex(user => user.email === loggedInUser.email);
+        if (userIndex !== -1) {
+            if (newUsername) users[userIndex].username = newUsername;
+            if (newEmail) users[userIndex].email = newEmail;
+            if (newPassword) users[userIndex].password = newPassword;
+
+            localStorage.setItem("users", JSON.stringify(users));
+            localStorage.setItem("loggedInUser", JSON.stringify(users[userIndex]));
+
+            alert("Account updated successfully!");
+            window.location.reload();
         }
     });
 
-    document.querySelector(".my-cart").addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector(".cart-container").classList.toggle("show-cart");
-    });
-
-    updateCartUI();
-});
-
-// CART SIDEBAR FUNCTIONALITY
-document.addEventListener("DOMContentLoaded", function () {
-    const cartBtn = document.querySelector(".my-cart");
-    const cartSidebar = document.querySelector(".cart-sidebar");
-    const closeCart = document.querySelector(".close-cart");
-    const cartOverlay = document.querySelector(".cart-overlay");
-
-    cartBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        cartSidebar.classList.add("show");
-        cartOverlay.classList.add("show");
-    });
-
-    closeCart.addEventListener("click", function () {
-        cartSidebar.classList.remove("show");
-        cartOverlay.classList.remove("show");
-    });
-
-    cartOverlay.addEventListener("click", function () {
-        cartSidebar.classList.remove("show");
-        cartOverlay.classList.remove("show");
-    });
-});
-
-// CHECKOUT FUNCTION FIX
-document.addEventListener("DOMContentLoaded", () => {
-    const checkoutBtn = document.querySelector(".checkout-btn");
-
-    if (checkoutBtn) {
-        checkoutBtn.addEventListener("click", () => {
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-            if (cart.length === 0) {
-                alert("Your cart is empty!");
-                return;
-            }
-
-            alert("Thank you for your purchase! Your order is being processed.");
-
-            // Clear cart in localStorage
-            localStorage.removeItem("cart");
-
-            // Reset the cart array
-            cart = [];
-
-            // Update UI immediately
-            updateCartUI();
+    // ✅ LOGOUT FUNCTION
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", function () {
+            localStorage.removeItem("loggedInUser");
+            showToast("👋 Logged out successfully!");
+            setTimeout(() => window.location.href = "login.html", 1500);
         });
     }
+
+    // ✅ Section Navigation in Dashboard
+    function showSection(sectionId) {
+        console.log("Attempting to show section:", sectionId); // Debugging
+
+        // Hide all sections first (Fix: Hide .dashboard-box instead of .hidden-section)
+        document.querySelectorAll('.dashboard-box').forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Show the target section
+        let targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+            targetSection.style.display = 'block';
+            console.log("Section displayed:", sectionId);
+        } else {
+            console.error("Section not found:", sectionId);
+            return;
+        }
+
+        // Update active class on buttons
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        let activeBtn = document.querySelector(`.tab-btn[data-section="${sectionId}"]`);
+        if (activeBtn) activeBtn.classList.add('active');
+
+        // Update URL hash
+        history.pushState(null, null, `#${sectionId}`);
+    }
+
+// Handle navigation clicks
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function (event) {
+        let section = this.getAttribute("href").split("#")[1]; // Get section from href
+        if (section) {
+            event.preventDefault(); // Stop page reload
+            showSection(section);
+        }
+    });
 });
 
-// Ensure updateCartUI() properly clears the UI
-function updateCartUI() {
-    const cartContainer = document.querySelector(".cart-items");
-    const cartTotal = document.querySelector(".cart-total");
-    const cartCount = document.querySelector(".cart-count");
+    // ✅ Load Dashboard Sections Correctly on Page Load
+    loadDashboard();
+    let section = window.location.hash.substring(1);
+    if (!section || !document.getElementById(section)) {
+        section = "settings"; // Default to settings if invalid
+    }
+    showSection(section);
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    // ✅ Event Listeners for Tab Buttons (Optional Fix)
+    document.querySelectorAll(".tab-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            let sectionId = this.getAttribute("data-section");
+            showSection(sectionId);
+        });
+    });
+});
 
-    if (!cartContainer || !cartTotal || !cartCount) return;
+// order history record
+function loadDashboard() {
+    console.log("loadDashboard() function executed"); // Debugging
 
-    if (cart.length === 0) {
-        cartContainer.innerHTML = "<p class='empty-cart'>Your cart is empty.</p>";
-        cartTotal.innerText = "$0.00";
-        cartCount.innerText = "0";
+    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!loggedInUser) {
+        window.location.href = "login.html"; // Redirect if not logged in
         return;
     }
 
-    let total = 0;
-    cartContainer.innerHTML = ""; // Clear current items
+    // ✅ Display Username and Email
+    document.getElementById("dashboardUsername").innerText = loggedInUser.username;
+    document.getElementById("dashboardEmail").innerText = loggedInUser.email;
 
-    cart.forEach((item, index) => {
-        total += item.price * item.quantity;
-        cartContainer.innerHTML += `
-            <div class="cart-item">
-                <img src="${item.image}" alt="${item.name}">
-                <div class="cart-item-details">
-                    <h4>${item.name}</h4>
-                    <p>$${item.price.toFixed(2)} x ${item.quantity}</p>
-                    <button class="remove-item" data-index="${index}">Remove</button>
-                </div>
-            </div>
-        `;
-    });
+    // ✅ Load Order History
+    let orderList = document.getElementById("orderList");
+    if (orderList) {
+        let orders = loggedInUser.orders || [];
+        orderList.innerHTML = ""; // Clear previous content
 
-    cartTotal.innerText = `$${total.toFixed(2)}`;
-    cartCount.innerText = cart.length;
-}
-
-// Run updateCartUI() when the page loads to ensure proper display
-document.addEventListener("DOMContentLoaded", updateCartUI);
-
-// clicking add minus button
-document.addEventListener("click", function (e) {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    if (e.target.classList.contains("increase")) {
-        const index = e.target.getAttribute("data-index");
-        cart[index].quantity++;
-        localStorage.setItem("cart", JSON.stringify(cart));
-        updateCartUI();
-    }
-
-    if (e.target.classList.contains("decrease")) {
-        const index = e.target.getAttribute("data-index");
-        if (cart[index].quantity > 1) {
-            cart[index].quantity--;
+        if (orders.length > 0) {
+            orders.forEach(order => {
+                let li = document.createElement("li");
+                li.textContent = order; // Assuming orders are stored as strings
+                li.classList.add("order-item"); // Add styling class
+                orderList.appendChild(li);
+            });
         } else {
-            cart.splice(index, 1); // Remove item if quantity reaches 0
+            orderList.innerHTML = "<li>No orders yet.</li>"; // Show default text
         }
-        localStorage.setItem("cart", JSON.stringify(cart));
-        updateCartUI();
     }
-});
+}
+// Call function on page load
+window.onload = function () {
+    loadDashboard();
+    let section = window.location.hash.substring(1) || 'settings';
+    showSection(section && document.getElementById(section) ? section : 'settings');
+};
 
-
-document.addEventListener("DOMContentLoaded", () => {
-    const checkoutBtn = document.querySelector(".checkout-btn");
-    const checkoutModal = document.getElementById("checkout-modal");
-    const closeModal = document.querySelector(".close-modal");
-    const checkoutForm = document.getElementById("checkout-form");
-
-    if (checkoutBtn) {
-        checkoutBtn.addEventListener("click", () => {
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-            if (cart.length === 0) {
-                alert("Your cart is empty!");
-                return;
-            }
-
-            // Show the checkout modal
-            checkoutModal.style.display = "block";
-        });
-    }
-
-    // Close modal when clicking "X"
-    if (closeModal) {
-        closeModal.addEventListener("click", () => {
-            checkoutModal.style.display = "none";
-        });
-    }
-
-    // Handle order submission
-    if (checkoutForm) {
-        checkoutForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-
-            const name = document.getElementById("name").value;
-            const address = document.getElementById("address").value;
-            const email = document.getElementById("email").value;
-            const contact = document.getElementById("contact").value;
-            const payment = document.getElementById("payment").value;
-
-            alert(`Thank you, ${name}! Your order has been placed.`);
-
-            // Clear cart and localStorage
-            localStorage.removeItem("cart");
-            updateCartUI();
-
-            // Close modal and redirect to homepage
-            checkoutModal.style.display = "none";
-            window.location.href = "index.html"; // Change this if your homepage is a different file
-        });
-    }
-});
+function closeReceipt() {
+    document.getElementById("receiptModal").style.display = "none";
+}

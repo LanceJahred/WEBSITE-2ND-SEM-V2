@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="styles2.css">
+    <script src="auth.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <section>
+        <div class="form-container" id="signup">
+            <!-- Sign Up Form -->
+            <form id="signup-form" method="post" action="register.php">
+                <h1>Sign Up</h1>
+                <div class="input-container">
+                    <i class="fas fa-user"></i>
+                    <div class="inputbox">
+                        <input type="text" name="fName" id="fName" required placeholder="First Name">
+                    </div>
+                </div>
+                <div class="input-container">
+                    <i class="fas fa-user"></i>
+                    <div class="inputbox">
+                        <input type="text" name="lName" id="lName" required placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="input-container">
+                    <i class="fas fa-envelope"></i>
+                    <div class="inputbox">
+                        <input type="email" name="email" id="email" required placeholder="Email">
+                    </div>
+                </div>
+                <div class="input-container">
+                    
+                    <div class="inputbox">
+                        <input type="password" id="password" name="password" required placeholder="Password">
+                        <i class="fas fa-eye toggle-password" onclick="togglePassword('password')"></i>
+                    </div>
+                </div>
+                <button type="submit" name="signUp" value="Sign Up">Sign Up</button>
+                <p class="or">--------Or--------</p>
+                <div class="icons">
+                    <i class="fab fa-google"></i>
+                    <i class="fab fa-facebook"></i>
+                </div>
+                <p>Already have an account? <a href="#" onclick="toggleForms()">Log In</a></p>
+            </form>
+            
+            <!-- Login Form -->
+             <div id="signIn">
+            <form id="login-form" style="display: none;" method="post" action="register.php">
+                <h1>Log In</h1>
+                <div class="input-container">
+                    <i class="fas fa-envelope"></i>
+                    <div class="inputbox">
+                        <input type="email" name="email" id="email" required placeholder="Username">
+                    </div>
+                </div>
+                <div class="input-container">
+
+                    <div class="inputbox">
+                        <input type="password" id="password" name="password" required placeholder="Password">
+                        <i class="fas fa-eye toggle-password" onclick="togglePassword('login-password')"></i>
+                    </div>
+                </div>
+                <p class="recover"><a href="#">Recover Password</a></p>
+                <button type="submit" name="signIn" value="sign In">Login</button>
+                <p class="or">--------Or--------</p>
+                <div class="icons">
+                    <i class="fab fa-google"></i>
+                    <i class="fab fa-facebook"></i>
+                </div>
+                <p>Don't have an account? <a href="#" onclick="toggleForms()">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+    </section>
+    
+    <script>
+        function toggleForms() {
+            let signupForm = document.getElementById("signup-form");
+            let loginForm = document.getElementById("login-form");
+            
+            if (signupForm.style.display === "none") {
+                signupForm.style.display = "block";
+                loginForm.style.display = "none";
+            } else {
+                signupForm.style.display = "none";
+                loginForm.style.display = "block";
+            }
+        }
+        function togglePassword(inputId) {
+    let passwordInput = document.getElementById(inputId);
+    let icon = passwordInput.nextElementSibling;
+    
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+    } else {
+        passwordInput.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    }
+}
+
+    </script>
+</body>
+</html>
