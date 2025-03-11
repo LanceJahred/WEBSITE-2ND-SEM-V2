@@ -536,7 +536,7 @@ body {
 /* Header */
 .header {
     background-color: #111;
-    padding: 15px 0;
+    padding: 10px 0; /* Reduced padding */
     position: fixed;
     width: 100%;
     top: 0;
@@ -545,6 +545,7 @@ body {
     box-shadow: 0px 4px 10px rgba(255, 215, 0, 0.1);
 }
 
+/* Container */
 .container {
     display: flex;
     justify-content: space-between;
@@ -554,10 +555,9 @@ body {
     padding: 0 20px;
 }
 
-
 /* Logo */
 .logo {
-    font-size: 2rem;
+    font-size: 1.8rem; /* Slightly reduced */
     font-weight: 700;
     text-decoration: none;
     color: #E5C07B;
@@ -568,25 +568,27 @@ body {
     color: white;
 }
 
-/* Navigation Menu */
+/* Navigation */
 .nav {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
+/* Navigation Links */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 25px;
+    gap: 15px; /* Reduced spacing */
 }
 
 .nav-links li {
-    display: inline-block;
+    padding: 10px; /* Reduced padding */
 }
 
 .nav-links a {
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1rem; /* Reduced font size */
     color: white;
     transition: color 0.3s;
 }
@@ -597,12 +599,12 @@ body {
 
 /* Shop Now Button */
 .btn {
-    margin-left: 20px;
-    padding: 10px 20px;
+    margin-left: 15px; /* Slightly reduced margin */
+    padding: 8px 18px; /* Adjusted padding */
     background-color: #E5C07B;
     color: #111;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 0.9rem; /* Slightly smaller font */
     font-weight: 500;
     border-radius: 5px;
     transition: background 0.3s;
@@ -612,40 +614,69 @@ body {
     background-color: white;
 }
 
-/* Mobile Menu */
+/* Mobile Menu Toggle */
 .menu-toggle {
     display: none;
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: white;
     cursor: pointer;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 1100;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
+        display: flex;
         flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 60%; /* Made it narrower */
+        max-width: 250px; /* Prevents it from being too wide */
+        height: 100vh;
         background: #222;
-        width: 100%;
         text-align: center;
-        padding: 15px 0;
+        padding-top: 50px; /* Less top padding */
+        box-shadow: -3px 0 10px rgba(0, 0, 0, 0.3);
+        transition: right 0.3s ease-in-out;
+        z-index: 1000;
+        overflow-y: auto;
     }
 
     .nav-links.active {
-        display: flex;
+        right: 0;
     }
 
     .nav-links li {
-        padding: 10px 0;
+        padding: 10px 0; /* Less padding */
     }
 
+    .nav-links a {
+        display: block;
+        font-size: 1rem; /* Reduced font */
+        padding: 8px 0; /* Less vertical padding */
+    }
+
+    /* Keep the menu toggle visible */
     .menu-toggle {
         display: block;
     }
+
+    /* Fix My Cart & Login button alignment */
+    .btn.my-cart, .btn.my-account {
+        width: auto;
+        max-width: 160px; /* Even smaller max width */
+        margin: 8px auto;
+        display: block;
+        padding: 8px 15px;
+        font-size: 0.9rem; /* Slightly smaller font */
+        text-align: center;
+    }
 }
+
 
 
 

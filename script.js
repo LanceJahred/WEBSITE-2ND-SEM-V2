@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     checkLoginStatus();
 
-    // ✅ SIGNUP FUNCTION
+    // ✅ SIGNUP FUNCTION (Fixed)
     if (signupForm) {
         signupForm.addEventListener("submit", function (e) {
             e.preventDefault();
@@ -49,11 +49,15 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("users", JSON.stringify(users));
 
             showToast("✅ Signup successful! Redirecting...");
-            setTimeout(() => window.location.href = "login.html", 1500);
+
+            setTimeout(() => {
+                console.log("Redirecting to login.html...");
+                window.location.href = "login.html";
+            }, 1500);
         });
     }
 
-    // ✅ LOGIN FUNCTION
+    // ✅ LOGIN FUNCTION (Fixed)
     if (loginForm) {
         loginForm.addEventListener("submit", function (e) {
             e.preventDefault();
@@ -67,29 +71,31 @@ document.addEventListener("DOMContentLoaded", function () {
             if (user) {
                 localStorage.setItem("loggedInUser", JSON.stringify(user));
                 showToast("✅ Login successful! Redirecting...");
-                setTimeout(() => window.location.href = "website.html", 1500);
+
+                setTimeout(() => {
+                    console.log("Redirecting to website.html...");
+                    window.location.href = "website.html";
+                }, 1500);
             } else {
                 showToast("❌ Invalid email or password.");
             }
         });
     }
 
-    // ✅ Load Dashboard Data
+    // ✅ Load Dashboard Data (Fixed)
     function loadDashboard() {
-        console.log("✅ loadDashboard() function is running"); // Debugging
-    
+        console.log("✅ loadDashboard() function is running");
+
         let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-        
         if (!loggedInUser) {
             console.log("❌ No logged-in user found. Redirecting to login.");
             window.location.href = "login.html";
             return;
         }
-    
-        // ✅ Check if elements exist before updating them
+
         let usernameElement = document.getElementById("dashboardUsername");
         let emailElement = document.getElementById("dashboardEmail");
-    
+
         if (usernameElement && emailElement) {
             usernameElement.innerText = loggedInUser.username || "Unknown";
             emailElement.innerText = loggedInUser.email || "Unknown";
@@ -97,8 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             console.error("❌ Dashboard elements not found.");
         }
-    
-        // ✅ Load order history
+
         let orderList = document.getElementById("orderList");
         if (orderList) {
             let orders = loggedInUser.orders || [];
@@ -107,9 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 : "<li>No orders yet.</li>";
         }
     }
-    
 
-    // ✅ Update User Info
+    // ✅ Update User Info (Fixed)
     document.getElementById("updateForm")?.addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -134,26 +138,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // ✅ LOGOUT FUNCTION
+    // ✅ LOGOUT FUNCTION (Fixed)
     const logoutBtn = document.getElementById("logoutBtn");
     if (logoutBtn) {
         logoutBtn.addEventListener("click", function () {
             localStorage.removeItem("loggedInUser");
             showToast("👋 Logged out successfully!");
-            setTimeout(() => window.location.href = "login.html", 1500);
+            setTimeout(() => {
+                console.log("Redirecting to login.html...");
+                window.location.href = "login.html";
+            }, 1500);
         });
     }
 
-    // ✅ Section Navigation in Dashboard
+    // ✅ Section Navigation in Dashboard (Fixed)
     function showSection(sectionId) {
-        console.log("Attempting to show section:", sectionId); // Debugging
+        console.log("Attempting to show section:", sectionId);
 
-        // Hide all sections first (Fix: Hide .dashboard-box instead of .hidden-section)
         document.querySelectorAll('.dashboard-box').forEach(section => {
             section.style.display = 'none';
         });
 
-        // Show the target section
         let targetSection = document.getElementById(sectionId);
         if (targetSection) {
             targetSection.style.display = 'block';
@@ -163,35 +168,31 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Update active class on buttons
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
         let activeBtn = document.querySelector(`.tab-btn[data-section="${sectionId}"]`);
         if (activeBtn) activeBtn.classList.add('active');
 
-        // Update URL hash
         history.pushState(null, null, `#${sectionId}`);
     }
 
-// Handle navigation clicks
-document.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", function (event) {
-        let section = this.getAttribute("href").split("#")[1]; // Get section from href
-        if (section) {
-            event.preventDefault(); // Stop page reload
-            showSection(section);
-        }
+    document.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", function (event) {
+            let section = this.getAttribute("href").split("#")[1];
+            if (section) {
+                event.preventDefault();
+                showSection(section);
+            }
+        });
     });
-});
 
-    // ✅ Load Dashboard Sections Correctly on Page Load
+    // ✅ Load Dashboard Sections Correctly on Page Load (Fixed)
     loadDashboard();
     let section = window.location.hash.substring(1);
     if (!section || !document.getElementById(section)) {
-        section = "settings"; // Default to settings if invalid
+        section = "settings";
     }
     showSection(section);
 
-    // ✅ Event Listeners for Tab Buttons (Optional Fix)
     document.querySelectorAll(".tab-btn").forEach(button => {
         button.addEventListener("click", function () {
             let sectionId = this.getAttribute("data-section");
@@ -200,39 +201,28 @@ document.querySelectorAll("a").forEach(link => {
     });
 });
 
-// order history record
+// ✅ Order History Load Fix
 function loadDashboard() {
-    console.log("loadDashboard() function executed"); // Debugging
+    console.log("loadDashboard() function executed");
 
     let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
     if (!loggedInUser) {
-        window.location.href = "login.html"; // Redirect if not logged in
+        window.location.href = "login.html";
         return;
     }
 
-    // ✅ Display Username and Email
     document.getElementById("dashboardUsername").innerText = loggedInUser.username;
     document.getElementById("dashboardEmail").innerText = loggedInUser.email;
 
-    // ✅ Load Order History
     let orderList = document.getElementById("orderList");
     if (orderList) {
         let orders = loggedInUser.orders || [];
-        orderList.innerHTML = ""; // Clear previous content
-
-        if (orders.length > 0) {
-            orders.forEach(order => {
-                let li = document.createElement("li");
-                li.textContent = order; // Assuming orders are stored as strings
-                li.classList.add("order-item"); // Add styling class
-                orderList.appendChild(li);
-            });
-        } else {
-            orderList.innerHTML = "<li>No orders yet.</li>"; // Show default text
-        }
+        orderList.innerHTML = orders.length > 0 
+            ? orders.map(order => `<li>${order}</li>`).join("") 
+            : "<li>No orders yet.</li>";
     }
 }
-// Call function on page load
+
 window.onload = function () {
     loadDashboard();
     let section = window.location.hash.substring(1) || 'settings';
@@ -242,3 +232,11 @@ window.onload = function () {
 function closeReceipt() {
     document.getElementById("receiptModal").style.display = "none";
 }
+document.querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("touchstart", function() {
+        this.classList.add("active");
+    });
+    btn.addEventListener("touchend", function() {
+        this.classList.remove("active");
+    });
+});

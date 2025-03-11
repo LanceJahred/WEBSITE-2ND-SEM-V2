@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wristworks - Premium Watches</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script>
@@ -36,6 +38,10 @@
     
                 <!-- Navigation Menu -->
                 <nav class="nav">
+                                  <!-- Mobile Menu Icon -->
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
                     <ul class="nav-links">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
@@ -43,36 +49,42 @@
                         <li><a href="#catalog">Catalog</a></li> 
                         <li><a href="#reviews">Reviews</a></li>                    
                         <li><a href="#contact">Contact</a></li>
+                             <li><a href="#cart" class="btn my-cart"><i class="fas fa-shopping-cart"></i> My Cart</a></li>
+                    <li><a id="accountBtn" href="login.html" class="btn my-account">Login</a></li>
                     </ul>
-                    <a href="#cart" class="btn my-cart"><i class="fas fa-shopping-cart"></i> My Cart</a>
-                    <a id="accountBtn" href="login.html" class="btn my-account">Login</a>
+               
 
 
                 </nav>
     
-                <!-- Mobile Menu Icon -->
-                <div class="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
+
             </div>
         </header>
     
-        <script>
-            // Toggle Mobile Menu
-            const menuToggle = document.querySelector(".menu-toggle");
-            const navLinks = document.querySelector(".nav-links");
-    
-            menuToggle.addEventListener("click", () => {
-                navLinks.classList.toggle("active");
+       <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        if (!menuToggle || !navLinks) {
+            console.error("Menu toggle or nav links not found!");
+            return;
+        }
+
+        menuToggle.addEventListener("click", () => {
+            console.log("Menu toggle clicked!"); // Debugging
+            navLinks.classList.toggle("active");
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
             });
-    
-            // Close menu when clicking a link (for better UX)
-            document.querySelectorAll(".nav-links a").forEach(link => {
-                link.addEventListener("click", () => {
-                    navLinks.classList.remove("active");
-                });
-            });
-        </script>
+        });
+    });
+</script>
+
     
 
 
@@ -610,7 +622,7 @@
     </div>
                 <div class="buttons">
                     <button class="btn view-details">View Details</button>
-                    <button class="btn add-to-cart" data-name="michael-kors couple" data-price="1100.00" onclick="addToCart()">
+                    <button class="btn add-to-cart" data-name="michael-kors couple" data-price="₱1100.00" onclick="addToCart()">
                         <i class="fas fa-shopping-cart"></i> Add to Cart
                     </button>
                 </div>
@@ -627,7 +639,7 @@
     <h2 class="section-title">Some Successful <span>Orders</span></h2>
     <div class="orders-gallery">
         <div class="order">
-            <img src="1741531494777.jpg" alt="Delivered Order">
+            <a href="1741531494777.jpg"><img src="1741531494777.jpg" alt="Delivered Order"></a>
             <p>Gold Royal Chrono - Delivered</p>
         </div>
         <div class="order">
