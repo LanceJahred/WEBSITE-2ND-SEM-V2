@@ -346,6 +346,8 @@ body {
     font-size: 1.1rem;
     line-height: 1.6;
     color: #EAEAEA;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .about-image {
@@ -353,8 +355,8 @@ body {
 }
 
 .about-image img {
-    width: 100%;
-    border-radius: 15px;
+    width: 95%;
+    border-radius: 18px;
     box-shadow: 0px 4px 10px rgba(255, 215, 0, 0.1);
     transition: transform 0.3s ease-in-out;
 }
@@ -621,10 +623,22 @@ body {
     color: white;
     cursor: pointer;
     position: fixed;
-    top: 15px;
+    top: 10px;
     right: 20px;
     z-index: 1100;
+    transition: 0.3s ease-in-out;
 }
+.menu-toggle.active {
+    transform: rotate(90deg) scale(1.1);
+}
+.menu-toggle i {
+    transition: opacity 0.2s ease-in-out;
+}
+
+.menu-toggle.active i {
+    opacity: 0;
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -1408,5 +1422,3 @@ select:focus {
         from { bottom: 30px; opacity: 1; }
         to { bottom: 0; opacity: 0; }
     }
-
-    

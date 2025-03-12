@@ -389,3 +389,23 @@ function updateAccountButton() {
 }
 
 document.addEventListener("DOMContentLoaded", updateAccountButton);
+
+AOS.init();
+
+const menuToggle = document.querySelector(".menu-toggle");
+const menuIcon = menuToggle.querySelector("i");
+
+menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active");
+
+    // Toggle between hamburger and close icon
+    if (menuIcon.classList.contains("fa-bars")) {
+        menuIcon.classList.replace("fa-bars", "fa-times"); // Change to "X"
+    } else {
+        menuIcon.classList.replace("fa-times", "fa-bars"); // Change back to menu
+    }
+});
+setTimeout(() => {
+    menuIcon.style.opacity = "1";
+}, ); // Delay the new icon appearing
+
